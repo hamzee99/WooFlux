@@ -29,7 +29,6 @@ class _OrdersState extends State<Orders> {
     String? customerSecret = dotenv.env['CUSTOMER_SECRET'];
     final storage = FlutterSecureStorage();
     final id = await storage.read(key: 'id');
-    print(id);
     final String url = "${baseUrl}orders?customer=$id";
     final credentials = "$consumerKey:$customerSecret";
     final utf = utf8.encode(credentials);
@@ -141,7 +140,7 @@ class _OrdersState extends State<Orders> {
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [Text("No Orders to Display")]),
+                        children: const [Text("No Orders to Display")]),
                   ),
           );
   }

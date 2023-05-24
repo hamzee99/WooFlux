@@ -28,8 +28,10 @@ AppBar myAppBar(BuildContext context) {
                 MediaQuery.of(context).size.height * 0.02,
                 0),
             child: InkWell(
-                onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => CartScreen())),
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CartScreen())),
                 child: const Icon(Icons.shopping_cart)),
           ),
           Padding(

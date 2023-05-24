@@ -33,7 +33,6 @@ class _HomeScreenState extends State<HomeScreen> {
     String? baseUrl = dotenv.env['BASE_URL'];
     String? consumerKey = dotenv.env['CONSUMER_KEY'];
     String? customerSecret = dotenv.env['CUSTOMER_SECRET'];
-    print("entered the function");
     int pageNum = 1;
     bool hasMorePages = true;
 
@@ -64,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ? 0.0
                         : double.parse(json['price']),
                     image: json['images'][0]['src']))
-                .toList() as List<Product>);
+                .toList());
             products.addAll(data);
             hasMorePages =
                 (response.headers['link']?.contains('rel="next"') ?? false);
@@ -81,7 +80,6 @@ class _HomeScreenState extends State<HomeScreen> {
     String? baseUrl = dotenv.env['BASE_URL'];
     String? consumerKey = dotenv.env['CONSUMER_KEY'];
     String? customerSecret = dotenv.env['CUSTOMER_SECRET'];
-    print("entered the function");
     int pageNum = 1;
     bool hasMorePages = true;
 
@@ -115,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ? 0.0
                         : double.parse(json['price']),
                     image: json['images'][0]['src']))
-                .toList() as List<Product>);
+                .toList());
             featureList.addAll(data);
             hasMorePages =
                 (response.headers['link']?.contains('rel="next"') ?? false);

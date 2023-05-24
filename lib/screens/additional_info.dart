@@ -72,8 +72,6 @@ class _AdditionalInfoState extends State<AdditionalInfo> {
       final response = await http.post(Uri.parse("${baseUrl}customers"),
           headers: headers, body: jsonEncode(data));
       if (response.statusCode == 201) {
-        print("User Creation Successful");
-        print(response.body);
         setState(() {
           isLoading = false;
           changeButton = true;
@@ -84,8 +82,6 @@ class _AdditionalInfoState extends State<AdditionalInfo> {
         setState(() {
           changeButton = false;
         });
-      } else {
-        print("User Creation Failed");
       }
     }
   }

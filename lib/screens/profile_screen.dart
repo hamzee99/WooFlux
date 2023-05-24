@@ -51,8 +51,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       if (mounted) {
         setState(() {
           final res = jsonDecode(response.body);
-          print(response.body);
-          print("entered in the client function");
           info.add(res);
           _fnameController.text = info[0]['first_name'];
           _lnameController.text = info[0]['last_name'];
@@ -62,12 +60,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
           _stateController.text = info[0]['billing']['state'];
           _cityController.text = info[0]['billing']['city'];
           _addressController.text = info[0]['billing']['address_1'];
-
-          print(info);
         });
       }
     } else {
-      print(response.statusCode);
       throw Exception('Failed to get client info');
     }
   }
@@ -82,7 +77,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final String url =
         '${baseUrl}customers/$customerId?consumer_key=$consumerKey&consumer_secret=$customerSecret';
 
-    final token = await storage.read(key: 'token');
     final response = await http.put(
       Uri.parse(url),
       headers: {
@@ -91,7 +85,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: jsonEncode(data),
     );
     if (response.statusCode == 200) {
-      print('Customer updated successfully.');
       showDialog(
           context: context,
           builder: (_) => AlertDialog(
@@ -107,8 +100,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ));
     } else {
-      print(response.statusCode);
-      print(response.body);
       throw Exception('Failed to update customer.');
     }
   }

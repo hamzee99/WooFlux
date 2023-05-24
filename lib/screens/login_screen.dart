@@ -232,9 +232,6 @@ class _LoginScreenState extends State<LoginScreen> {
       await storage.write(key: 'lname', value: data['data']['lastName']);
       await storage.write(key: 'email', value: data['data']['email']);
       log.changeLog();
-      print("LOGGED IN : ${log.isLoggedIn}");
-      print(data['data']['token']);
-      print("Authentication Successful");
       setState(() {
         isLoading = false;
         changeButton = true;
@@ -253,11 +250,6 @@ class _LoginScreenState extends State<LoginScreen> {
         isLoading = false;
       });
       final data = jsonDecode(response.body);
-      print(email);
-      print(data['message']);
-      print(jsonDecode(response.body));
-      print(response.statusCode);
-      print("Login Failed");
       throw Exception('Failed to log in');
     } else {
       setState(() {

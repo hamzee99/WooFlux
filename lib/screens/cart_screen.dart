@@ -34,7 +34,6 @@ Future<Map<String, dynamic>> getClientById(int id) async {
     final data = jsonDecode(response.body);
     return data;
   } else {
-    print(response.statusCode);
     throw Exception('Failed to get client info');
   }
 }
@@ -93,15 +92,11 @@ Future<Map<String, dynamic>> postOrder(int customerId, List<Product> products,
             headers: {"Content-Type": "application/json"},
             body: jsonEncode(productUpdateData));
       } else {
-        print(productResponse.statusCode);
-        print(productResponse.body);
         throw Exception('Failed to get product data');
       }
     }
     return jsonDecode(response.body);
   } else {
-    print(response.statusCode);
-    print(response.body);
     throw Exception('Failed to post order');
   }
 }
